@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: rgb(163, 165, 165);
+        margin: 0;
+        font-family: 'Arial', sans-serif;
+        color: #61dafb;
+    }
+    
+    .clock {
+        text-align: center;
+        border: 10px solid #fd0202;
+        padding: 40px;
+        border-radius: 10px;
+        background-color: #282c34;
+    }
+    
+    #time {
+        font-size: 48px;
+        margin-bottom: 10px;
+        
+    }
+    #time:hover{
+        transform: scale(1.1);
+       color: chartreuse;
+    }
+    
+    #date {
+        font-size: 24px;
+    }
+    #date:hover{
+        transform: scale(1.1);
+        color: crimson;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="clock">
+        <div id="time"></div>
+        <div id="date"></div>
+    </div>
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const timeString = `${hours}:${minutes}:${seconds}`;
+
+            const day = String(now.getDate()).padStart(2, '0');
+            const month = String(now.getMonth() + 1).padStart(2, '0'); 
+            const year = now.getFullYear();
+            const dateString = `${day}/${month}/${year}`;
+
+            document.getElementById('time').textContent = timeString;
+            document.getElementById('date').textContent = dateString;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock(); 
+
+    </script>
+</body>
+
+</html>
